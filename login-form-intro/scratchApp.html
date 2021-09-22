@@ -4,10 +4,9 @@
 
     <div id="app">
         <div v-cloak>
-            <custom-login-form/>
-            
             <hr />
-           
+           <div v-if="isVisible" class="box"></div>
+           <div v-if="isVisible" class="box"></div>
         
         </div>
     </div>
@@ -17,53 +16,22 @@
     let app = Vue.createApp({
             data: function() {
                 return{
-
-                    
-                }
-            },
-            methods: {
-            
-            }
-        })
-        app.component("custom-login-form", {
-            template: `
-            <form @submit.prevent="handleSubmit">
-                <h1> {{title}} </h1>
-                <custom-input type="email" v-model="email"/>
-                <custom-input type="password" v-model="password" />
-                <button>Log in</button>
-                <button>Forgot Password</button>
-            </form>
-            `,
-            data(){
-                return{
-                    title: "Login Form",
-                    email: "",
-                    password: ""
-                }
-            },
-            methods: {
-                handleSubmit(){
-                    console.log(this.email, this.password);
+                    isVisible: true              
                 }
             }
         })
-
-        app.component("custom-input", {
-            template: `
-            <label>
-                {{label}}
-                <input type="text"/>
-                </label> `
-            })
+       
         app.mount("#app")
 </script>
 
 <style>
     [v-cloak]{display:none !important;}
-    input{
-        margin: 10px;
-        display: block;
+    .box{
+        height: 200px;
+        width: 200px;
+        background-color:brown;
+      
+        margin: auto;
     }
 </style>
 
