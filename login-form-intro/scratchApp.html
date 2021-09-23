@@ -5,8 +5,13 @@
     <div id="app">
         <div v-cloak>
             <hr />
-           <div v-if="isVisible" class="box"></div>
-           <div v-if="isVisible" class="box"></div>
+            <button v-on:click="toggle=!toggle">Show Box</button>
+            <div v-if="isVisible" class="box"></div>
+            
+            <div v-if="toggle" class="box"></div>
+
+            <button @click="toggleBox">Toggle the Box</button> 
+            <div v-if="showORhide" class="box"></div>
         
         </div>
     </div>
@@ -16,8 +21,15 @@
     let app = Vue.createApp({
             data: function() {
                 return{
-                    isVisible: true              
+                    isVisible: true,
+                    toggle: true,
+                    showORhide: true              
                 }
+            methods: {
+                toggleBox() {
+                    this.showORhide=!this.showORhide;
+                }
+            }    
             }
         })
        
@@ -30,7 +42,6 @@
         height: 200px;
         width: 200px;
         background-color:brown;
-      
         margin: auto;
     }
 </style>
